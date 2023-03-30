@@ -1,0 +1,33 @@
+{%extends 'main.html'%}
+{%block content%}
+<h1>Clientes</h1>
+<table class="table">
+  {% comment %} el thead es la cabeza de la tabla, el tr la primera linea, y los th cada titulo de la cabecera {% endcomment %}
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Apellido</th>
+      <th scope="col">Dirección</th>
+      <th scope="col">Email</th>
+      <th scope="col">Telefono</th>
+    </tr>
+  </thead>
+  {% comment %} el tbody ya van los datos, el tr es cada fila, y los td son los valores de cada fila, y con el for voy agregando los valores {% endcomment %}
+  <tbody>
+    {% comment %} recorro la clave "clientes" la cual se la pase en el view, y pongo cada valor en "cliente" {% endcomment %}
+    {% for cliente in clientes %}
+    <tr>
+      {% comment %} con el "." accedo a los valores de cada registro, porque en si, son objetos de los modelos {% endcomment %}
+      <th scope="row">{{cliente.id}}</th>
+      <td>{{cliente.nombre}}</td>
+      <td>{{cliente.apellido}}</td>
+      <td>{{cliente.direccion}}</td>
+      <td>{{cliente.email}}</td>
+      <td>{{cliente.telefono}}</td>
+    </tr>
+    {% endfor %}
+    
+  </tbody>
+</table>
+{%endblock%}
